@@ -2,7 +2,6 @@
 
 package com.example.unscramble
 
-//import android.R.attr.text
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -303,7 +302,6 @@ private fun FinalScoreDialog(
     onPlayAgain: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-//    @androidx.compose.runtime.Composable @androidx.compose.runtime.Composable @androidx.compose.runtime.Composable @androidx.compose.runtime.Composable { Text(stringResource(R.string.you_scored, score)) }.also { text = it }
     val activity = LocalActivity.current
 
     AlertDialog(
@@ -331,3 +329,16 @@ private fun FinalScoreDialog(
         }
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
