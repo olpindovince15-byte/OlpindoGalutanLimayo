@@ -7,7 +7,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.compose.LocalActivity
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,7 +18,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -31,7 +29,6 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.collectAsState
@@ -56,58 +53,30 @@ import kotlinx.coroutines.flow.asStateFlow
 // Vincent Olpindo & Aaron Earl Galutan
 
 @Composable
-fun GameStatus(
-    score: Int,
-    modifier: Modifier = Modifier
-) {
-    Card(
-        modifier = modifier
-    ) {
-        Text(
-            text = stringResource(R.string.score, score),
-            style = MaterialTheme.typography.headlineMedium,
-            modifier = Modifier.padding(8.dp)
-        )
+fun GameStatus(score: Int, modifier: Modifier = Modifier) {
+    Card(modifier = modifier) {
+        Text(text = stringResource(R.string.score, score), style = MaterialTheme.
+        typography.headlineMedium, modifier = Modifier.padding(8.dp))
     }
 }
 
 @Composable
-fun GameLayout(
-    onUserGuessChanged: (String) -> Unit,
-    userGuess: String,
-    onKeyboardDone: () -> Unit,
-    currentScrambledWord: String,
-    isGuessWrong: Boolean,
-    wordCount: Int,
-    modifier: Modifier = Modifier
-) {
+fun GameLayout(onUserGuessChanged: (String) -> Unit, userGuess: String, onKeyboardDone: () -> Unit,
+               currentScrambledWord: String, isGuessWrong: Boolean, wordCount: Int,
+               modifier: Modifier = Modifier) {
+
     val mediumPadding = dimensionResource(R.dimen.padding_medium)
 
-    Card(
-        modifier = modifier,
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 5.dp
-        )
-    ) {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(mediumPadding),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(mediumPadding)
-        ) {
+    Card(modifier = modifier, elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
+    ) { Column(verticalArrangement = Arrangement.spacedBy(mediumPadding),
+        horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
+            .padding(mediumPadding)) {
+
             // Word count
-            Text(
-                modifier = Modifier
-                    .clip(MaterialTheme.shapes.medium)
-                    .background(MaterialTheme.colorScheme.surfaceTint)
-                    .padding(
-                        horizontal = 10.dp,
-                        vertical = 4.dp
-                    )
-                    .align(Alignment.End),
-                text = stringResource(
-                    R.string.word_count,
-                    wordCount
-                ),
+            Text(modifier = Modifier.clip(MaterialTheme.shapes.medium).background(
+                MaterialTheme.colorScheme.surfaceTint).padding(horizontal = 10.dp,
+                vertical = 4.dp).align(Alignment.End), text = stringResource(R.string.word_count,
+                    wordCount),
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onPrimary
             )
