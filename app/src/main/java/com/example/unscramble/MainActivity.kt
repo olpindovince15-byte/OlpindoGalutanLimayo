@@ -302,7 +302,8 @@ private fun FinalScoreDialog(
     onPlayAgain: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-//    @androidx.compose.runtime.Composable @androidx.compose.runtime.Composable @androidx.compose.runtime.Composable @androidx.compose.runtime.Composable { Text(stringResource(R.string.you_scored, score)) }.also { text = it }
+
+
     val activity = LocalActivity.current
 
     AlertDialog(
@@ -330,3 +331,4 @@ private fun FinalScoreDialog(
         }
     )
 }
+
