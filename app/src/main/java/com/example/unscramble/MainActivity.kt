@@ -48,6 +48,10 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.unscramble.ui.GameViewModel
 import com.example.unscramble.ui.theme.UnscrambleTheme
+import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 // Vincent Olpindo & Aaron Earl Galutan
 
@@ -284,4 +288,35 @@ private fun FinalScoreDialog(
             }
         }
     )
+}
+
+
+data class GameUiState(
+    val scrambledWord: String = "",
+    val userAnswer: String = "",
+    val score: Int = 0
+)
+
+
+
+
+class GameViewModel : ViewModel() {
+
+    val words = listOf(
+        "CAT",
+        "DOG",
+        "BOOK"
+    )
+
+    private val _uiState = MutableStateFlow(
+        GameUiState(
+            scrambledWord = words[0]
+                .toList()
+                .shuffled()
+                .joinToString("")
+        )
+    )
+
+    val uiState: StateFlow<GameUiState> =
+        _uiState.asStateFlow()
 }
