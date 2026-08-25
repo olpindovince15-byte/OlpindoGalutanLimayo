@@ -24,9 +24,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme.colorScheme
-import androidx.compose.material3.MaterialTheme.shapes
-import androidx.compose.material3.MaterialTheme.typography
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -36,7 +34,6 @@ import androidx.compose.material3.TextButton
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -54,10 +51,6 @@ import com.example.unscramble.ui.theme.UnscrambleTheme
 
 // Vincent Olpindo & Aaron Earl Galutan
 
-
-
-
-
 @Composable
 fun GameStatus(
     score: Int,
@@ -68,15 +61,11 @@ fun GameStatus(
     ) {
         Text(
             text = stringResource(R.string.score, score),
-            style = typography.headlineMedium,
+            style = MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(8.dp)
         )
     }
 }
-
-
-
-
 
 @Composable
 fun GameLayout(
@@ -88,7 +77,6 @@ fun GameLayout(
     wordCount: Int,
     modifier: Modifier = Modifier
 ) {
-
     val mediumPadding = dimensionResource(R.dimen.padding_medium)
 
     Card(
@@ -97,71 +85,54 @@ fun GameLayout(
             defaultElevation = 5.dp
         )
     ) {
-
         Column(
             verticalArrangement = Arrangement.spacedBy(mediumPadding),
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(mediumPadding)
         ) {
-
             // Word count
             Text(
                 modifier = Modifier
-                    .clip(shapes.medium)
-                    .background(colorScheme.surfaceTint)
+                    .clip(MaterialTheme.shapes.medium)
+                    .background(MaterialTheme.colorScheme.surfaceTint)
                     .padding(
                         horizontal = 10.dp,
                         vertical = 4.dp
                     )
                     .align(Alignment.End),
-
                 text = stringResource(
                     R.string.word_count,
                     wordCount
                 ),
-
-                style = typography.titleMedium,
-
-                color = colorScheme.onPrimary
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onPrimary
             )
-
-
 
             // Display scrambled word
             Text(
                 text = currentScrambledWord,
-                style = typography.displayMedium
+                style = MaterialTheme.typography.displayMedium
             )
-
 
             // Instructions
             Text(
                 text = stringResource(R.string.instructions),
                 textAlign = TextAlign.Center,
-                style = typography.titleMedium
+                style = MaterialTheme.typography.titleMedium
             )
-
-
 
             // Accept user's answer
             OutlinedTextField(
-
                 value = userGuess,
-
                 singleLine = true,
-
-                shape = shapes.large,
-
+                shape = MaterialTheme.shapes.large,
                 modifier = Modifier.fillMaxWidth(),
-
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedContainerColor = colorScheme.surface,
-                    unfocusedContainerColor = colorScheme.surface,
-                    disabledContainerColor = colorScheme.surface
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                    disabledContainerColor = MaterialTheme.colorScheme.surface
                 ),
-
                 onValueChange = onUserGuessChanged,
-
                 label = {
                     Text(
                         stringResource(
@@ -169,13 +140,10 @@ fun GameLayout(
                         )
                     )
                 },
-
                 isError = isGuessWrong,
-
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done
                 ),
-
                 keyboardActions = KeyboardActions(
                     onDone = {
                         onKeyboardDone()
@@ -186,23 +154,15 @@ fun GameLayout(
     }
 }
 
-
-
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         enableEdgeToEdge()
-
         setContent {
-
             UnscrambleTheme {
-
                 Scaffold(
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
-
                     GameScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -211,9 +171,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-
-
 
 @Composable
 fun GameScreen(
@@ -230,10 +187,9 @@ fun GameScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         Text(
             text = stringResource(R.string.app_name),
-            style = typography.titleLarge
+            style = MaterialTheme.typography.titleLarge
         )
 
         GameLayout(
@@ -302,8 +258,6 @@ private fun FinalScoreDialog(
     onPlayAgain: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-
-
     val activity = LocalActivity.current
 
     AlertDialog(
@@ -331,4 +285,3 @@ private fun FinalScoreDialog(
         }
     )
 }
-
