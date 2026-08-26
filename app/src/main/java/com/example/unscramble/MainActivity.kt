@@ -85,8 +85,8 @@ fun GameLayout(onUserGuessChanged: (String) -> Unit, userGuess: String, onKeyboa
             Text(text = currentScrambledWord, style = MaterialTheme.typography.displayMedium)
 
             // Instructions
-            Text(text = stringResource(R.string.instructions), textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.titleMedium)
+            Text(text = stringResource(R.string.instructions), textAlign =
+                TextAlign.Center, style = MaterialTheme.typography.titleMedium)
 
             // Accept user's answer
             OutlinedTextField(value = userGuess, singleLine = true,
@@ -104,12 +104,8 @@ fun GameLayout(onUserGuessChanged: (String) -> Unit, userGuess: String, onKeyboa
                         )
                     )
                 },
-                isError = isGuessWrong,
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    imeAction = ImeAction.Done
-                ),
-                keyboardActions = KeyboardActions(
-                    onDone = {
+                isError = isGuessWrong, keyboardOptions = KeyboardOptions.Default.copy(imeAction =
+                    ImeAction.Done), keyboardActions = KeyboardActions(onDone = {
                         onKeyboardDone()
                     }
                 )
