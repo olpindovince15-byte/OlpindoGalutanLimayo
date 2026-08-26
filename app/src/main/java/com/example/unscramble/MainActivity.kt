@@ -50,7 +50,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-// Vincent Olpindo & Aaron Earl Galutan
+// Vincent Olpindo & Aaron Earl Galutan & Charlee Limayo
 
 @Composable
 fun GameStatus(score: Int, modifier: Modifier = Modifier) {
