@@ -82,28 +82,19 @@ fun GameLayout(onUserGuessChanged: (String) -> Unit, userGuess: String, onKeyboa
             )
 
             // Display scrambled word
-            Text(
-                text = currentScrambledWord,
-                style = MaterialTheme.typography.displayMedium
-            )
+            Text(text = currentScrambledWord, style = MaterialTheme.typography.displayMedium)
 
             // Instructions
-            Text(
-                text = stringResource(R.string.instructions),
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.titleMedium
-            )
+            Text(text = stringResource(R.string.instructions), textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleMedium)
 
             // Accept user's answer
-            OutlinedTextField(
-                value = userGuess,
-                singleLine = true,
-                shape = MaterialTheme.shapes.large,
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedContainerColor = MaterialTheme.colorScheme.surface,
-                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                    disabledContainerColor = MaterialTheme.colorScheme.surface
+            OutlinedTextField(value = userGuess, singleLine = true,
+                shape = MaterialTheme.shapes.large, modifier = Modifier.fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(focusedContainerColor =
+                    MaterialTheme.colorScheme.surface, unfocusedContainerColor =
+                    MaterialTheme.colorScheme.surface, disabledContainerColor = MaterialTheme
+                        .colorScheme.surface
                 ),
                 onValueChange = onUserGuessChanged,
                 label = {
