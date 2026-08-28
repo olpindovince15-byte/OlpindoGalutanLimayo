@@ -6,7 +6,7 @@ data class GameUiState(
     val score: Int = 0,
     val isGuessedWordWrong: Boolean = false,
     val isGameOver: Boolean = false,
+    val userAnswer: String,
+    val scrambledWord: String,
 ) {
-    val scrambledWord: String
-    val userAnswer: String
 }
