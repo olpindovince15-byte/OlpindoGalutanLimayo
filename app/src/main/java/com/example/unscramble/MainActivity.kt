@@ -58,13 +58,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             UnscrambleTheme {
 
-                Scaffold(
-                    modifier = Modifier.fillMaxSize()
-                ) { innerPadding ->
-
-                    GameScreen(
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    GameScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -72,18 +67,9 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GameStatus(
-    score: Int,
-    modifier: Modifier = Modifier
-) {
-    Card(
-        modifier = modifier
-    ) {
-        Text(
-            text = stringResource(
-                R.string.score,
-                score
-            ),
+fun GameStatus(score: Int, modifier: Modifier = Modifier) {
+    Card(modifier = modifier) {
+        Text(text = stringResource(R.string.score, score),
             style = MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(8.dp)
         )
@@ -98,22 +84,15 @@ fun GameLayout(
     currentScrambledWord: String,
     isGuessWrong: Boolean,
     wordCount: Int,
-    modifier: Modifier = Modifier
-) {
-
-    val mediumPadding =
-        dimensionResource(R.dimen.padding_medium)
-
+    modifier: Modifier = Modifier)
+{
+    val mediumPadding = dimensionResource(R.dimen.padding_medium)
     Card(
         modifier = modifier,
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 5.dp
-        )
+        elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
     ) {
-
         Column(
-            verticalArrangement =
-                Arrangement.spacedBy(mediumPadding),
+            verticalArrangement = Arrangement.spacedBy(mediumPadding),
 
             horizontalAlignment =
                 Alignment.CenterHorizontally,
@@ -285,7 +264,7 @@ fun GameScreen(
 
             wordCount =
                 gameUiState.currentWordCount,
-
+ 
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()

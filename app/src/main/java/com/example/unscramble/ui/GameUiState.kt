@@ -8,5 +8,5 @@ data class GameUiState(
     val isGameOver: Boolean = false,
     val userAnswer: String,
     val scrambledWord: String,
-) {
-}
+)
+
